@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Studios</title>
+    <meta name="description" content="This is an Machine Learning Project given to College Studens under SSIP Program.">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css') }}">
+<link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/Aldrich.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/Roboto.css') }}">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='fonts/fontawesome5-overrides.min.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/Animated-Toggle-NavBar-BS5.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/Black-Navbar.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/full-screen-navbar-search.css') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/Navbar-Right-Links-Dark-icons.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/responsive-navbar.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/Video-Parallax-Background-v2-multiple-parallax.css') }}">
+<link href="https://fonts.googleapis.com/css2?family=Aldrich&display=swap" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+    <meta name="theme-color" content="#FFFFFF">
+</head>
+
+<body style="background: rgb(14, 0, 70);">
+    <!-- Start: Login Signup in Modal -->
+    <div class="container-fluid">
+        <div class="modal fade" role="dialog" tabindex="-1" id="login-modal">
+            <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4>Login</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+<!--<form method="post" action="/upload.html" onsubmit="return validateForm()">-->
+<form method="post" action="/upload.html">
+    <div class="form-group mb-3">
+        <div class="input-group">
+            <span class="text-primary input-group-text"><i class="fa fa-envelope-o"></i></span>
+            <input class="form-control" type="text" required="" placeholder="Username" name="username" id="username">
+        </div>
+    </div>
+    <div class="form-group mb-3">
+        <div class="input-group">
+            <span class="text-primary input-group-text"><i class="fa fa-lock"></i></span>
+            <input class="form-control" type="password" required="" placeholder="Password" name="password" id="password">
+        </div>
+    </div>
+    <div class="form-group mb-3">
+        <button class="btn btn-primary btn-lg" style="width: 100%;border-radius: 10px;" type="submit" value="Login">Log in</button>
+    </div>
+</form>
+
+<!--<script>-->
+<!--function validateForm() {-->
+<!--    var username = document.getElementById("username").value;-->
+<!--    var password = document.getElementById("password").value;-->
+
+<!--    if (username === "admin" && password === "12345678") {-->
+<!--        return true; // Form will be submitted-->
+<!--    } else {-->
+<!--        alert("Invalid username or password");-->
+<!--        return false; // Form submission will be prevented-->
+<!--    }-->
+<!--}-->
+<!--</script>-->
+
+                        <hr style="background-color: #bababa;">
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#forgotpassword-modal">
+                            Forgot Password
+                        </button>
+                        <p class="text-center">Don't have an account? &nbsp;<a class="text-decoration-none" href="#" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#signup-modal">SignUp</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Start: Forgot Password in Modal -->
+<div class="modal fade" role="dialog" tabindex="-1" id="forgotpassword-modal">
+    <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4>Forgot Password</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="post" action="/update-password">
+                     <div class="form-group mb-3">
+                        <div class="input-group">
+                            <span class="text-primary input-group-text"><i class="fa fa-envelope-o"></i></span>
+                            <input class="form-control" type="text" required="" placeholder="Username" name="username" id="username">
+                        </div>
+                    </div>
+                    <div class="form-group mb-3">
+                        <div class="input-group">
+                            <span class="text-primary input-group-text"><i class="fa fa-lock"></i></span>
+                            <input class="form-control" type="password" required="" placeholder="New Password" name="newpassword" id="newpassword">
+                        </div>
+                    </div>
+                    <div class="form-group mb-3">
+                        <button class="btn btn-primary btn-lg" style="width: 100%;border-radius: 10px;" type="submit" value="Update Password">Update Password</button>
+                    </div>
+                </form>
+                <hr style="background-color: #bababa;">
+                <p class="text-center">Remembered your password? &nbsp;<a class="text-decoration-none" href="#" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#login-modal">Log In</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End: Forgot Password in Modal -->
+
+        <div class="modal fade" role="dialog" tabindex="-1" id="signup-modal">
+            <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4>SignUp</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="text-center"><button class="btn btn-primary text-start" style="width: 100%;background: #f44336;" type="button"><i class="fa fa-facebook"></i>&nbsp; Continue with Facebook</button></div>
+                        <div class="text-center mt-2"><button class="btn btn-light text-start border-dark" style="width: 100%;" type="button"><i class="fa fa-google"></i>&nbsp; Continue with Google</button></div>
+                        <form class="mt-4">
+                            <div class="form-group mb-3">
+                                <div class="input-group"><span class="text-primary input-group-text"><i class="fa fa-user-o"></i></span><input class="form-control" type="text" required="" placeholder="Full Name"></div>
+                            </div>
+                            <div class="form-group mb-3">
+                                <div class="input-group"><span class="text-primary input-group-text"><i class="fa fa-envelope-o"></i></span><input class="form-control" type="email" required="" placeholder="Email"></div>
+                            </div>
+                            <div class="form-group mb-3">
+                                <div class="input-group"><span class="text-primary input-group-text"><i class="fa fa-lock"></i></span><input class="form-control" type="password" required="" placeholder="Password"></div>
+                            </div>
+                            <div class="form-group mb-3">
+                                <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-1" required="" checked=""><label class="form-check-label" for="formCheck-1">I agree all the terms and conditions.</label></div>
+                            </div>
+                            <div class="form-group mb-3"><button class="btn btn-primary btn-lg" style="width: 100%;border-radius: 10px;" type="button">SignUp</button></div>
+                        </form>
+                        <hr style="background-color: #bababa;">
+                        <p class="text-center">Already have an Account?&nbsp;<a class="text-decoration-none" href="#" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#login-modal">Login</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" role="dialog" tabindex="-1" id="contactus-modal">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4><i class="fas fa-phone-alt"></i>&nbsp;Contact Us</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="text-start d-lg-flex justify-content-lg-start">
+                            <h5><i class="fas fa-envelope"></i>&nbsp;Mail us on&nbsp;</h5><a href="mailto:aashah.ai@spcevng.ac.in" style="font-size: 18px;">aashah.ai@spcevng.ac.in</a>
+                        </div>
+                        <div class="text-start d-lg-flex justify-content-lg-start">
+                            <h5><i class="fas fa-phone-volume"></i>&nbsp;Call us on&nbsp;</h5><a href="tel:+919824584855" style="font-size: 18px;">9824584855</a>
+                            <h5>&nbsp;,&nbsp;</h5><a href="tel:+919228346748" style="font-size: 18px;">9228346748</a>
+                            <h5>&nbsp;,&nbsp;</h5><a href="tel:+919904039672" style="font-size: 18px;">9904039672</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" role="dialog" tabindex="-1" id="aboutus-modal">
+            <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4><i class="fas fa-user-tie"></i>&nbsp;About Us</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="text-start">
+                            <h5>Studios<</h5>
+                            <h5>website is based on student management system.they can easily get access to gt documents,results and view results</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" role="dialog" tabindex="-1" id="programs-modal">
+            <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4><i class="fas fa-list-alt"></i>&nbsp;Programs</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="text-start">
+                            <h5>Faculty of engineering and technology&nbsp;<br></h5>
+                            <h5>Faculty of nootan pharmacy college<br></h5>
+                            <h5>Faculty of Nootan Medical collage and research centre<br></h5>
+                            <h5>Faculty of Swami Sachchidanand politecnic college<br></h5>
+                            <h5>Faculty of Nootan college&nbsp;of&nbsp;Nursing<br></h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" role="dialog" tabindex="-1" id="teamdetails-modal" style="max-width: 100%;max-height: 100%;">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4><i class="fas fa-user-check"></i>&nbsp;Team Details</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <h5><i class="fas fa-users"></i><strong>&nbsp;Team Members / PRN</strong></h5>
+                        <div>
+                            <h5>1) Raval Nimisha Mukeshkumar</h5>
+                            <h5>PRN:&nbsp;2019095900007181</h5>
+                        </div>
+                        <div>
+                            <h5>2) Raval Roshani Yashvantbhai</h5>
+                            <h5>PRN: 2019095900007285</h5>
+                        </div>
+                        <div>
+                            <h5>3) Prajapati Paresh Dineshbhai<br></h5>
+                            <h5>PRN: 2019095900007753<br></h5>
+                        </div>
+                        <div>
+                            <h5>4) Prajapati Vishal Sureshbhai&nbsp;<br></h5>
+                            <h5>PRN: 2019095900007865<br></h5>
+                        </div>
+                        <hr>
+                        <h5><i class="far fa-building"></i><strong>&nbsp;College</strong></h5>
+                        <div>
+                            <h5>Sankalchand Patel College of Engineering</h5>
+                        </div>
+                        <hr>
+                        <h5><i class="fas fa-briefcase"></i><strong>&nbsp;Department</strong></h5>
+                        <div>
+                            <h5>Information of Communication Technology (ICT)</h5>
+                        </div>
+                        <hr>
+                        <h5><i class="fas fa-map-marker-alt"></i><strong>&nbsp;Address</strong></h5>
+                        <div>
+                            <h5>Sankalchand Patel University,<br>Sankalchand Patel Vidyadham,<br>Ambaji-Gandhinagar State Highway,<br>Visnagar-384315, Dist: Mehsana,<br>Gujarat (INDIA)</h5>
+                            <div class="d-lg-flex align-items-lg-start">
+                                <h5>Admin office:&nbsp;</h5><a href="tel:+917069006374" style="font-size: 18px;">7069006374</a>
+                                <h5>&nbsp;,&nbsp;</h5><a href="tel:8238088591" style="font-size: 18px;">8238088591</a>
+                            </div>
+                            <div class="d-lg-flex align-items-lg-start">
+                                <h5>Email:&nbsp;</h5><a href="mailto:info@spu.ac.in" style="font-size: 18px;">info@spu.ac.in</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" role="dialog" tabindex="-1" id="contactsupport-modal" style="max-width: 100%;max-height: 100%;">
+            <div class="modal-dialog modal-md modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4><i class="far fa-comments"></i>&nbsp;Contact Support</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div><a href="https://web.whatsapp.com" target="_blank" style="text-decoration: none;color: rgb(0,191,7);font-size: 18px;"><i class="fab fa-whatsapp"></i>&nbsp;WhatsApp Chat Help Support</a></div>
+                        <div><a href="https://facebook.com" target="_blank" style="text-decoration: none;color: var(--bs-blue);font-size: 18px;"><i class="fab fa-facebook"></i>&nbsp;Facebook Chat Help Support</a></div>
+                        <div><a href="https://gmail.com" target="_blank" style="text-decoration: none;color: #ff4b32;font-size: 18px;"><i class="fas fa-envelope"></i>&nbsp;E-Mail Help Support</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End: Login Signup in Modal -->
+
+    <nav class="navbar navbar-dark navbar-expand-lg sticky-top" style="max-width: 100%;max-height: 75px;color: rgb(255,255,255);background: rgba(255,255,255,0);position: sticky;">
+        <div class="container-fluid"><a class="navbar-brand d-lg-flex justify-content-lg-center align-items-lg-center" data-aos="zoom-in-right" data-aos-duration="1000" href="#" style="font-size: 24px;font-family: Aldrich, sans-serif;"><i class="fab fa-connectdevelop pulse animated infinite" style="font-size: 34px;"></i><strong>&nbsp;Studios</strong></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse d-md-flex align-items-md-end" id="navcol-1">
+                <ul class="navbar-nav" data-aos="zoom-in-left" data-aos-duration="1000" style="font-family: Aldrich, sans-serif;">
+                    <li class="nav-item"><a class="nav-link" href="index.html" style="color: #f85c5c;"><i class="fas fa-home"></i>&nbsp;Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-upload"></i>&nbsp;Upload</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#aboutus-modal"><i class="fas fa-info-circle"></i>&nbsp;About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#programs-modal"><i class="fas fa-list-alt"></i>&nbsp;Programs</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#contactus-modal"><i class="fas fa-phone-alt"></i>&nbsp;Contact Us</a></li>
+                    <li class="nav-item d-lg-flex align-items-lg-center">
+                        <div class="nav-item dropdown" id="more-dropdown"><a class="dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" href="#" style="color: rgba(255,255,255,0.55);text-decoration: none;"><i class="fas fa-plus"></i>&nbsp;More</a>
+                            <div class="dropdown-menu" style="right: 0;left: auto;box-shadow: 0px 0px 30px 0px rgb(255,255,255);border-width: 5px;border-color: rgb(29, 4, 129);border-top-color: rgb(29,;border-right-color: 4,;border-bottom-color: 129);border-left-color: 4,;border-radius: 25px;"><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#login-modal" style="border-top-left-radius: 10px;border-top-right-radius: 10px;"><i class="fas fa-user"></i>&nbsp;My Account</a><!-- Start: Menu Divider --><div class="dropdown-divider"></div><!-- End: Menu Divider --><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#teamdetails-modal"><i class="fas fa-users"></i>&nbsp;Team Details</a><a class="dropdown-item" href="#" style="border-bottom-right-radius: 10px;border-bottom-left-radius: 10px;" data-bs-toggle="modal" data-bs-target="#contactsupport-modal"><i class="fas fa-comments"></i>&nbsp;Contact Support</a></div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Start: Video Parallax Background v2 -->
+    <div class="parallax">
+        <!-- Start: Content -->
+        <div class="container d-flex justify-content-center align-items-center parallax-content" style="height:100vh;">
+            <div class="col-12 col-md-10 col-lg-8 d-flex justify-content-center flex-column">
+                <h1 style="font-family: Aldrich, sans-serif;">Studios Project</h1>
+                <p style="font-family: Aldrich, sans-serif;"><br><span style="color: rgb(209, 213, 219); background-color: rgba(14, 0, 70, 0);">Discover the student management &amp;</span>&nbsp;<span style="color: rgb(209, 213, 219); background-color: rgba(14, 0, 70, 0);">&nbsp;system </span><span style="color: rgb(209, 213, 219); background-color: rgba(14, 0, 70, 0);"> get access to documenents result of students, attendance </span><br><br></p>
+                <div class="row" style="font-size: 16px;">
+                    <div class="col d-flex justify-content-end"><button class="btn btn-primary" id="signup" type="button" style="font-size: 16px;border-radius: 10px;font-family: Aldrich, sans-serif;" data-bs-toggle="modal" data-bs-target="#signup-modal"><i class="fas fa-user-plus"></i>&nbsp;SignUp</button></div>
+                    <div class="col d-flex justify-content-start"><button class="btn btn-warning" id="login" type="button" style="font-size: 16px;border-radius: 10px;font-family: Aldrich, sans-serif;" data-bs-toggle="modal" data-bs-target="#login-modal"><i class="fas fa-sign-in-alt"></i>&nbsp;Login</button></div>
+                </div>
+            </div>
+        </div><!-- End: Content -->
+        <!-- Start: Video background --><iframe allowfullscreen="" frameborder="0" src="https://www.youtube-nocookie.com/embed/tUP5S4YdEJo?autoplay=1&amp;mute=1&amp;loop=1&amp;playlist=tUP5S4YdEJo&amp;controls=0" data-aos="zoom-in-up" class="parallax-background"></iframe><!-- End: Video background -->
+    </div><!-- End: Video Parallax Background v2 -->
+
+
+  
+  <!-- Footer -->
+    <footer>
+        <div class="container"">
+          <p>Copyright © 2024 | STUDIOS | Student management system</p></br>
+        </div>
+    </footer>
+
+<style>
+                               body {
+                                font-family: 'Aldrich', sans-serif;
+                              }
+                              
+                               footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+    }
+    footer p{
+        font-family: Aldrich, sans-serif;
+        color: rgb(255, 255, 255);
+        display: flex;
+        justify-content: center;
+        }
+</style>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom"></script>
+    <script src="{{ url_for('static', filename='js/bs-init.js') }}?h=02a8f8d0119ea38ce4670281c1438789"></script>
+    <script src="{{ url_for('static', filename='js/full-screen-navbar-search.js') }}?h=acb42710ac8f7ed0706959ab3a64e69e"></script>
+    <script src="{{ url_for('static', filename='js/Video-Parallax-Background-v2.js') }}?h=81910c12a0000502c6f31bf0e802d587"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+</body>
+</html>

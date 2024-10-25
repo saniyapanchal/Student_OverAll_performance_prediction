@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap-grid.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap-reboot.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='all.min.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+    <link href="{{ url_for('static', filename='bootstrap.min.css') }}" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.1/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Aldrich&display=swap" rel="stylesheet">
+    
+    <meta name="theme-color" content="#FFFFFF">
+
+    <!-- Bootstrap Design CSS -->
+    <link rel="stylesheet"
+        href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css') }}?h=f1a8fe9e98944b9d682ec5c3efac8f17">
+    <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}?h=eed4d16da80411bc190c3c04527f71d5">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Roboto.css') }}?h=fff9993378badb723bd77f42243688b0">
+    <link rel="stylesheet"
+        href="{{ url_for('static', filename='css/Roboto Slab.css') }}?h=fff9993378badb723bd77f42243688b0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <link rel="stylesheet"
+        href="{{ url_for('static', filename='css/Animated-Toggle-NavBar-BS5.css') }}?h=8f067fa860957d8f71f56c70191fd3df">
+    <link rel="stylesheet"
+        href="{{ url_for('static', filename='css/Black-Navbar.css') }}?h=5ba3564199f115ae77dd64b33b7a4328">
+    <link rel="stylesheet"
+        href="{{ url_for('static', filename='css/full-screen-navbar-search.css') }}?h=fd4a213646c85259a1b74385e02cccf4">
+    <link rel="stylesheet"
+        href="{{ url_for('static', filename='css/Navbar-Right-Links-Dark-icons.css') }}?h=befd8a398792e305b7ffd4a176b5b585">
+    <link rel="stylesheet"
+        href="{{ url_for('static', filename='css/responsive-navbar.css') }}?h=a45c8a5956a2369d4a49dfe054fd5b4d">
+
+
+    <title>Upload Dataset</title>
+</head>
+
+<body>
+    <!-- Start: Modals -->
+    <div class="container-fluid">
+        <div class="modal fade" role="dialog" tabindex="-1" id="contactus-modal">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4><i class="fas fa-phone-alt"></i>&nbsp;Contact Us</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="text-start d-lg-flex justify-content-lg-start">
+                            <h5><i class="fas fa-envelope"></i>&nbsp;Mail us on&nbsp;</h5><a href="mailto:aashah.ai@spcevng.ac.in" style="font-size: 18px;">aashah.ai@spcevng.ac.in</a>
+                        </div>
+                        <div class="text-start d-lg-flex justify-content-lg-start">
+                            <h5><i class="fas fa-phone-volume"></i>&nbsp;Call us on&nbsp;</h5><a href="tel:+919824584855" style="font-size: 18px;">9824584855</a>
+                            <h5>&nbsp;,&nbsp;</h5><a href="tel:+919228346748" style="font-size: 18px;">9228346748</a>
+                            <h5>&nbsp;,&nbsp;</h5><a href="tel:+919904039672" style="font-size: 18px;">9904039672</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" role="dialog" tabindex="-1" id="aboutus-modal">
+            <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4><i class="fas fa-user-tie"></i>&nbsp;About Us</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="text-start">
+                            <h5>Welcome To Sentiment monitoring system<br>Sentiment monitoring system is a Professional Education Platform. Here we will only provide you with interesting content that you will enjoy very much. We are committed to providing you the best of Education , with a focus on reliability and Generate student performance report . we strive to turn our passion for Education into a thriving website. We hope you enjoy our Education as much as we enjoy giving them to you.<br></h5>
+                            <h5>I will keep on posting such valuable anf knowledgeable information on my Website for all of you. Your love and support&nbsp;matters&nbsp;a&nbsp;lot.</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" role="dialog" tabindex="-1" id="programs-modal">
+            <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4><i class="fas fa-list-alt"></i>&nbsp;Programs</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="text-start">
+                            <h5>Faculty of engineering and technology&nbsp;<br></h5>
+                            <h5>Faculty of nootan pharmacy college<br></h5>
+                            <h5>Faculty of Nootan Medical collage and research centre<br></h5>
+                            <h5>Faculty of Swami Sachchidanand politecnic college<br></h5>
+                            <h5>Faculty of Nootan college&nbsp;of&nbsp;Nursing<br></h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" role="dialog" tabindex="-1" id="myprofile-modal" style="max-width: 100%;max-height: 100%;">
+            <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4><i class="fas fa-user-circle"></i>&nbsp;My Profile Details</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+<!--                    <div class="modal-body">-->
+<!--                        <form method="post" action="/forgot-password">  -->
+<!--                            <div style="width: 100%;">-->
+<!--                                <h1 style="font-size: 18px;"><strong>User:</strong> admin</h1>-->
+<!--                            </div>-->
+<!--                            <div style="width: 100%;">-->
+<!--                                <h1 style="font-size: 18px;"><strong>Email:</strong> admin@gmail.com</h1>-->
+<!--                            </div>-->
+<!--                            <hr style="margin-bottom: 10px;">-->
+<!--                            <h1 style="font-size: 18px;margin-bottom: 5px;"><i class="fas fa-unlock-alt"></i><strong>&nbsp;Change Password:</strong></h1>-->
+<!--                            <div style="width: 100%;"><input type="text" name="username" placeholder="Enter username" id="username"><input type="password" name="password" id="password" style="width: 100%;border-radius: 5px;border-style: solid;margin-bottom: 5px;padding-left: 10px;" placeholder="Enter Current Password"><input type="password" style="width: 100%;border-radius: 5px;border-style: solid;margin-bottom: 5px;padding-left: 10px;" placeholder="Enter New Password" name="newpassword" id="newpassword"></div>-->
+<!--                            <hr>-->
+<!--                            <div class="text-end"><button class="btn btn-primary" type="button" style="border-radius: 10px;border-color: #1485ee;"><i class="fas fa-edit"></i>&nbsp;Change</button></div>-->
+<!--                        </form>-->
+<!--                    </div>-->
+                     <div class="modal-body">
+                        <form method="post" action="/update-password">
+                             <div class="form-group mb-3">
+                                <div class="input-group">
+                                    <span class="text-primary input-group-text"><i class="fa fa-envelope-o"></i></span>
+                                    <input class="form-control" type="text" required="" placeholder="Username" name="username" id="username">
+                                </div>
+                            </div>
+                            <div class="form-group mb-3">
+                                <div class="input-group">
+                                    <span class="text-primary input-group-text"><i class="fa fa-lock"></i></span>
+                                    <input class="form-control" type="password" required="" placeholder="Current Password" name="password" id="password">
+                                </div>
+                            </div>
+                            <div class="form-group mb-3">
+                                <div class="input-group">
+                                    <span class="text-primary input-group-text"><i class="fa fa-lock"></i></span>
+                                    <input class="form-control" type="password" required="" placeholder="New Password" name="newpassword" id="newpassword">
+                                </div>
+                            </div>
+                            <div class="form-group mb-3">
+                                <button class="btn btn-primary btn-lg" style="width: 100%;border-radius: 10px;" type="submit" value="Update Password">Update Password</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" role="dialog" tabindex="-1" id="deleteaccount-modal" style="max-width: 100%;max-height: 100%;">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4><i class="fas fa-question-circle" style="font-size: 25px;"></i>&nbsp;Confirm Delete Account?</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <h1 style="font-size: 18px;">Are you sure you want to Delete your Account? This will delete your account permanently, and you'll be not able to access &amp; login with your account any more..</h1>
+                        <hr>
+                        <div class="text-end"><button class="btn btn-danger" type="button" style="border-radius: 10px;border-color: #1485ee;"><i class="fas fa-trash-alt"></i>&nbsp;Yes, Delete</button></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" role="dialog" tabindex="-1" id="teamdetails-modal" style="max-width: 100%;max-height: 100%;">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4><i class="fas fa-user-check"></i>&nbsp;Team Details</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <h5><i class="fas fa-users"></i><strong>&nbsp;Team Members / PRN</strong></h5>
+                        <div>
+                            <h5>1) Raval Nimisha Mukeshkumar</h5>
+                            <h5>PRN:&nbsp;2019095900007181</h5>
+                        </div>
+                        <div>
+                            <h5>2) Raval Roshani Yashvantbhai</h5>
+                            <h5>PRN: 2019095900007285</h5>
+                        </div>
+                        <div>
+                            <h5>3) Prajapati Paresh Dineshbhai<br></h5>
+                            <h5>PRN: 2019095900007753<br></h5>
+                        </div>
+                        <div>
+                            <h5>4) Prajapati Vishal Sureshbhai&nbsp;<br></h5>
+                            <h5>PRN: 2019095900007865<br></h5>
+                        </div>
+                        <hr>
+                        <h5><i class="far fa-building"></i><strong>&nbsp;College</strong></h5>
+                        <div>
+                            <h5>Sankalchand Patel College of Engineering</h5>
+                        </div>
+                        <hr>
+                        <h5><i class="fas fa-briefcase"></i><strong>&nbsp;Department</strong></h5>
+                        <div>
+                            <h5>Information of Communication Technology (ICT)</h5>
+                        </div>
+                        <hr>
+                        <h5><i class="fas fa-map-marker-alt"></i><strong>&nbsp;Address</strong></h5>
+                        <div>
+                            <h5>Sankalchand Patel University,<br>Sankalchand Patel Vidyadham,<br>Ambaji-Gandhinagar State Highway,<br>Visnagar-384315, Dist: Mehsana,<br>Gujarat (INDIA)</h5>
+                            <div class="d-lg-flex align-items-lg-start">
+                                <h5>Admin office:&nbsp;</h5><a href="tel:+917069006374" style="font-size: 18px;">7069006374</a>
+                                <h5>&nbsp;,&nbsp;</h5><a href="tel:8238088591" style="font-size: 18px;">8238088591</a>
+                            </div>
+                            <div class="d-lg-flex align-items-lg-start">
+                                <h5>Email:&nbsp;</h5><a href="mailto:info@spu.ac.in" style="font-size: 18px;">info@spu.ac.in</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" role="dialog" tabindex="-1" id="contactsupport-modal" style="max-width: 100%;max-height: 100%;">
+            <div class="modal-dialog modal-md modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4><i class="far fa-comments"></i>&nbsp;Contact Support</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div><a href="https://web.whatsapp.com" target="_blank" style="text-decoration: none;color: rgb(0,191,7);font-size: 18px;"><i class="fab fa-whatsapp"></i>&nbsp;WhatsApp Chat Help Support</a></div>
+                        <div><a href="https://facebook.com" target="_blank" style="text-decoration: none;color: var(--bs-blue);font-size: 18px;"><i class="fab fa-facebook"></i>&nbsp;Facebook Chat Help Support</a></div>
+                        <div><a href="https://gmail.com" target="_blank" style="text-decoration: none;color: #ff4b32;font-size: 18px;"><i class="fas fa-envelope"></i>&nbsp;E-Mail Help Support</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" role="dialog" tabindex="-1" id="logout-modal" style="max-width: 100%;max-height: 100%;">
+            <div class="modal-dialog modal-md modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4><i class="fas fa-sign-out-alt"></i>&nbsp;Confirm Logout ?</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div>
+                            <h1 style="font-size: 18px;">Are you sure you want to Logout from this device?</h1>
+                        </div>
+                        <hr>
+                        <div style="text-align: right;"><button class="btn btn-warning" type="button" style="text-align: right;border-radius: 10px;"><i class="fas fa-sign-out-alt"></i>&nbsp;Logout</button></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End: Modals -->
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-dark navbar-expand-lg sticky-top"
+        style="max-width: 100%;max-height: 75px;color: rgb(255,255,255);background: rgba(255,255,255,0);position: sticky;">
+        <div class="container-fluid"><a class="navbar-brand d-lg-flex justify-content-lg-center align-items-lg-center"
+                style="font-size: 18px;" href="#"><i class="fab fa-connectdevelop pulse animated infinite"
+                    style="font-size: 28px;"></i><strong>&nbsp;Machine Learning</strong></a><button
+                data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span
+                    class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse d-md-flex align-items-md-end" id="navcol-1">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="index.html"><i class="fas fa-home"></i>&nbsp;Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="upload.html" style="color: #f85c5c;"><i
+                                class="fas fa-upload"></i>&nbsp;Upload</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" data-bs-toggle="modal"
+                        data-bs-target="#aboutus-modal"><i class="fas fa-info-circle"></i>&nbsp;About
+                            us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#programs-modal"><i class="fas fa-list-alt"></i>&nbsp;Programs</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#contactus-modal"><i class="fas fa-phone-alt"></i>&nbsp;Contact
+                            us</a></li>
+                            <li class="nav-item d-lg-flex align-items-lg-center" style="margin-left: 10px;">
+                                <div class="nav-item dropdown"><a class="dropdown-toggle" aria-expanded="false"
+                                        data-bs-toggle="dropdown" href="#"
+                                        style="color: rgba(255,255,255,0.55);text-decoration: none;"><i
+                                            class="fas fa-user-circle"></i>&nbsp;My Account</a>
+                                    <div class="dropdown-menu"
+                                        style="right: 0;left: auto;box-shadow: 0px 0px 30px 0px rgb(255,255,255);border-width: 5px;border-color: rgb(29, 4, 129);border-top-color: rgb(29,;border-right-color: 4,;border-bottom-color: 129);border-left-color: 4,;border-radius: 25px;">
+                                        <a class="dropdown-item" id="myAccount-1st" href="#" data-bs-toggle="modal"
+                                            data-bs-target="#myprofile-modal"
+                                            style="border-top-left-radius: 10px;border-top-right-radius: 10px;"><i
+                                                class="fas fa-user"></i>&nbsp;My Profile</a><a class="dropdown-item" href="#"
+                                            data-bs-toggle="modal" data-bs-target="#deleteaccount-modal"><i
+                                                class="fas fa-trash-alt"></i>&nbsp;Delete
+                                            Account</a><!-- Start: Menu Divider -->
+                                        <div class="dropdown-divider"></div><!-- End: Menu Divider --><a class="dropdown-item"
+                                            href="#" data-bs-target="#teamdetails-modal" data-bs-toggle="modal"><i
+                                                class="fas fa-users"></i>&nbsp;Team Details</a><a class="dropdown-item" href="#"
+                                            data-bs-toggle="modal" data-bs-target="#contactsupport-modal"><i
+                                                class="fas fa-comments"></i>&nbsp;Contact
+                                            Support</a><!-- Start: Menu Divider -->
+                                        <div class="dropdown-divider"></div><!-- End: Menu Divider --><a class="dropdown-item"
+                                            id="myAccount-5th" href="#"
+                                            style="border-bottom-right-radius: 10px;border-bottom-left-radius: 10px;"
+                                            data-bs-toggle="modal" data-bs-target="#logout-modal"><i
+                                                class="fas fa-sign-out-alt"></i>&nbsp;Logout</a>
+                                    </div>
+                                </div>
+                            </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+    <script
+        src="{{ url_for('static', filename='js/full-screen-navbar-search.js') }}?h=acb42710ac8f7ed0706959ab3a64e69e"></script>
+
+
+    <!-- mainBox for Upload -->
+    <div class="mainBox container">
+        <div class="label">
+            <h1>Upload Dataset for Exploration</h1>
+        </div>
+        <div class="form-box" id="form-box">
+            <form method="POST" action="{{ url_for('upload_file') }}" enctype="multipart/form-data">
+                <label for="csv-upload" class="custom-file-upload">
+                    <i class="fas fa-file"></i> Choose CSV File
+                </label>
+                <input id="csv-upload" type="file" name="file" accept=".csv">
+                <button type="submit" class="custom-upload-btn"><i class="fas fa-upload"></i> Upload</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container"">
+          <p>Copyright © 2023 | Studios| Student management system</p></br>
+        </div>
+    </footer>
+
+    <script src=" https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom"></script>
+    <script src="{{ url_for('static', filename='js/bs-init.js') }}?h=02a8f8d0119ea38ce4670281c1438789"></script>
+    <script src="{{ url_for('static', filename='js/full-screen-navbar-search.js') }}?h=acb42710ac8f7ed0706959ab3a64e69e"></script>
+    <script src="{{ url_for('static', filename='js/Video-Parallax-Background-v2.js') }}?h=81910c12a0000502c6f31bf0e802d587"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+</body>
+</html>
+
+<!-- JavaScript -->
+<script>
+    const fileInput = document.getElementById('csv-upload');
+    const fileInputLabel = document.querySelector('.custom-file-upload');
+    const uploadBtn = document.querySelector('.custom-upload-btn');
+
+    fileInput.addEventListener('change', function () {
+        if (fileInput.value) {
+            fileInputLabel.classList.add('selected');
+            fileInputLabel.textContent = fileInput.files[0].name;
+        } else {
+            fileInputLabel.classList.remove('selected');
+            fileInputLabel.textContent = 'Choose File';
+        }
+    });
+
+    uploadBtn.addEventListener('click', function () {
+        uploadBtn.classList.add('uploading');
+    });
+</script>
+
+<!-- CSS -->
+<style>
+    body {
+        font-family: 'Aldrich', sans-serif;
+        font-size: 18px;
+        background-color: rgb(14, 0, 70);
+    }
+
+    .mainBox {
+        transform: translate(0%, 50%);
+        padding: 50px;
+        width: 50%;
+        border-radius: 25px;
+        border: 5px solid rgb(49, 7, 219);
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        color: rgb(0, 0, 0);
+        box-shadow: 0px 0px 30px rgb(59, 10, 255);
+        background-color: rgba(255, 255, 255, 1);
+    }
+
+    h1 {
+        color: rgb(0, 0, 0);
+        font-size: 2em;
+        font-weight: 600;
+
+    }
+
+    .label {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    input[type="file"] {
+        display: none; 
+    }
+    .custom-file-upload, .custom-upload-btn {
+        display: inline-block;
+        margin: 2px;
+        padding: 2vh 3vh 2vh 3vh; 
+        cursor: pointer; 
+        background-color: #f44336; 
+        color: rgb(255, 255, 255);
+        font-size: 1.5em; 
+        border-radius: 25px; 
+        transition: background-color 0.3s ease;
+    }
+    .custom-file-upload:hover, .custom-upload-btn:hover {
+        background-color: #f85c5c;
+    }
+    .custom-file-upload i { 
+        margin-right: 10px;
+    }
+    .custom-file-upload.selected, .custom-upload-btn.uploading {
+        background-color: #28ac2c;
+    }
+    .form-box {
+        display: flex;
+        align-items: center;
+        align-self: center;
+        align-content: center;
+        justify-self: center;
+        justify-items: center;
+        justify-content: center;
+    }
+    footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+    }
+    p {
+        color: rgb(255, 255, 255);
+        display: flex;
+        justify-content: center;
+    }
+    .dropdown-menu {
+        font-size: 18px;
+        border: 2px solid blue;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.375);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    .dropdown-item {
+        background-color: white;
+        color: black;
+    }
+    .dropdown-item:hover {
+        background-color: #ffffff;
+        color: #f44336;
+    }
+    .navbar-nav .nav-link {
+        color: #000000;
+    }
+    .navbar-nav .nav-link:hover {
+        color: #000000;
+    }
+    .navbar-nav a {
+        text-decoration: none;
+    }
+</style>

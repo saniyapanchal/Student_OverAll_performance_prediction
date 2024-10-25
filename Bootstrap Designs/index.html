@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Machine Learning - Project</title>
+    <meta name="description" content="This is an Machine Learning Project given to College Studens under SSIP Program.">
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css?h=f1a8fe9e98944b9d682ec5c3efac8f17">
+    <link rel="manifest" href="/manifest.json?h=eed4d16da80411bc190c3c04527f71d5">
+    <link rel="stylesheet" href="/assets/css/Aldrich.css?h=50530789cfcf501036e201f584c6e42a">
+    <link rel="stylesheet" href="/assets/css/Roboto.css?h=29278ab2311aaff293548305544ec8c9">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <link rel="stylesheet" href="/assets/css/Animated-Toggle-NavBar-BS5.css?h=c1671b95e17c1ec708249940d3ace199">
+    <link rel="stylesheet" href="/assets/css/Black-Navbar.css?h=41c375f835bbc79a86265199aa6f3210">
+    <link rel="stylesheet" href="/assets/css/full-screen-navbar-search.css?h=fd4a213646c85259a1b74385e02cccf4">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link rel="stylesheet" href="/assets/css/Navbar-Right-Links-Dark-icons.css?h=befd8a398792e305b7ffd4a176b5b585">
+    <link rel="stylesheet" href="/assets/css/responsive-navbar.css?h=a45c8a5956a2369d4a49dfe054fd5b4d">
+    <link rel="stylesheet" href="/assets/css/Video-Parallax-Background-v2-multiple-parallax.css?h=1dfa005c13421f44d2f063f40de6ca6b">
+</head>
+
+<body style="background: rgb(14, 0, 70);">
+    <!-- Start: Login Signup in Modal -->
+    <div class="container-fluid">
+        <div class="modal fade" role="dialog" tabindex="-1" id="overall-performance-modal" style="max-width: 100%;max-height: 100%;width: 100%;">
+            <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4>Overall Performance</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body"><div>
+      <!--<h2>Performance Remarks</h2>-->
+      {% if performance_remarks == "Good" %}
+      <h1><strong style="color:green"> Overall Performance: {{performance_percentage}}%
+          ({{performance_remarks}})</strong>
+      </h1>
+      {% elif performance_remarks == "Bad" %}
+      <h1><strong style="color:red"> Overall Performance: {{performance_percentage}}%
+          ({{performance_remarks}}%)</strong>
+        <h1>
+          {% else %}
+          <h1><strong> Overall Performance: {{performance_percentage}}% ({{performance_remarks}})</strong></h1>
+          {% endif %}
+          <!--<h2>Overall Performance Graph</h2>-->
+          <img width="1000" src="data:image/png;base64,{{overall_performance_graph}}" alt="Overall Performance Graph">
+    </div>
+          <div class="chart-container">
+      <canvas id="scatterplot" width="800" height="600"></canvas>
+    </div></div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" role="dialog" tabindex="-1" id="pie-classtest-modal" style="max-width: 100%;max-height: 100%;">
+            <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4>Class Test Marks</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body"><img src="data:image/png;base64,{{classtest_graph}}" alt="Class Test Mark Graphs"></div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" role="dialog" tabindex="-1" id="pie-assignment-modal" style="max-width: 100%;max-height: 100%;">
+            <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4>Assignment Marks</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body"><img src="data:image/png;base64,{{assignment_graph}}" alt="Assignment Marks Graph"></div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" role="dialog" tabindex="-1" id="pie-attendance-modal" style="max-width: 100%;max-height: 100%;">
+            <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4>Attendance Marks</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body"><img src="data:image/png;base64,{{attendance_graph}}" alt="Attendance Marks Graph"></div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" role="dialog" tabindex="-1" id="pie-midsem-modal" style="max-width: 100%;max-height: 100%;">
+            <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4>Mid Sem Marks</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body"><img src="data:image/png;base64,{{midsem_graph}}" alt="Mid Sem Marks Graph"></div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" role="dialog" tabindex="-1" id="pie-finalexam-modal" style="max-width: 100%;max-height: 100%;">
+            <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4>Final Exam Marks</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body"><img src="data:image/png;base64,{{finalexam_graph}}" alt="Final Exam Marks Graph"></div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" role="dialog" tabindex="-1" id="bar-classtest-modal" style="max-width: 100%;max-height: 100%;">
+            <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4>Class Test Marks</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body"><img src="data:image/png;base64,{{ class_test }}" alt="Class Test Histogram" class="img-fluid"></div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" role="dialog" tabindex="-1" id="bar-assignment-modal" style="max-width: 100%;max-height: 100%;">
+            <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4>Assignment Marks</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body"><img src="data:image/png;base64,{{ assignment }}" alt="Assignment Histogram" class="img-fluid"></div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" role="dialog" tabindex="-1" id="bar-attendance-modal" style="max-width: 100%;max-height: 100%;">
+            <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4>Attendance Marks</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body"><img src="data:image/png;base64,{{ attendance }}" alt="Attendance Histogram" class="img-fluid"></div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" role="dialog" tabindex="-1" id="bar-midsem-modal" style="max-width: 100%;max-height: 100%;">
+            <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4>Mid Sem Marks</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body"><img src="data:image/png;base64,{{ mid_sem }}" alt="Mid Sem Histogram" class="img-fluid"></div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" role="dialog" tabindex="-1" id="bar-finalexam-modal" style="max-width: 100%;max-height: 100%;">
+            <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4>Final Exam Marks</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body"><img src="data:image/png;base64,{{ final_exam }}" alt="Final Exam Histogram" class="img-fluid"></div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" role="dialog" tabindex="-1" id="myprofile-modal" style="max-width: 100%;max-height: 100%;">
+            <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4><i class="fas fa-user-circle"></i>&nbsp;My Profile Details</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div style="width: 100%;">
+                            <h1 style="font-size: 18px;"><strong>User:</strong> admin</h1>
+                        </div>
+                        <div style="width: 100%;">
+                            <h1 style="font-size: 18px;"><strong>Email:</strong> admin@gmail.com</h1>
+                        </div>
+                        <hr style="margin-bottom: 10px;">
+                        <h1 style="font-size: 18px;margin-bottom: 5px;"><i class="fas fa-unlock-alt"></i><strong>&nbsp;Change Password:</strong></h1>
+                        <div style="width: 100%;"><input type="password" style="width: 100%;border-radius: 5px;border-style: solid;margin-bottom: 5px;padding-left: 10px;" placeholder="Enter Current Password"><input type="password" style="width: 100%;border-radius: 5px;border-style: solid;margin-bottom: 5px;padding-left: 10px;" placeholder="Enter New Password"><input type="password" style="width: 100%;border-radius: 5px;border-style: solid;margin-bottom: 5px;padding-left: 10px;" placeholder="Re-Enter Password"></div>
+                        <hr>
+                        <div class="text-end"><button class="btn btn-primary" type="button" style="border-radius: 10px;border-color: #1485ee;"><i class="fas fa-edit"></i>&nbsp;Change</button></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" role="dialog" tabindex="-1" id="deleteaccount-modal" style="max-width: 100%;max-height: 100%;">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4><i class="fas fa-question-circle" style="font-size: 25px;"></i>&nbsp;Confirm Delete Account?</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <h1 style="font-size: 18px;">Are you sure you want to Delete your Account? This will delete your account permanently, and you'll be not able to access &amp; login with your account any more..</h1>
+                        <hr>
+                        <div class="text-end"><button class="btn btn-danger" type="button" style="border-radius: 10px;border-color: #1485ee;"><i class="fas fa-trash-alt"></i>&nbsp;Yes, Delete</button></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" role="dialog" tabindex="-1" id="teamdetails-modal" style="max-width: 100%;max-height: 100%;">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4><i class="fas fa-user-check"></i>&nbsp;Team Details</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <h5><i class="fas fa-users"></i><strong>&nbsp;Team Members / PRN</strong></h5>
+                        <div>
+                            <h5>1) Raval Nimisha Mukeshkumar</h5>
+                            <h5>PRN:&nbsp;2019095900007181</h5>
+                        </div>
+                        <div>
+                            <h5>2) Raval Roshani Yashvantbhai</h5>
+                            <h5>PRN: 2019095900007285</h5>
+                        </div>
+                        <div>
+                            <h5>3) Prajapati Paresh Dineshbhai<br></h5>
+                            <h5>PRN: 2019095900007753<br></h5>
+                        </div>
+                        <div>
+                            <h5>4) Prajapati Vishal Sureshbhai&nbsp;<br></h5>
+                            <h5>PRN: 2019095900007865<br></h5>
+                        </div>
+                        <hr>
+                        <h5><i class="far fa-building"></i><strong>&nbsp;College</strong></h5>
+                        <div>
+                            <h5>Sankalchand Patel College of Engineering</h5>
+                        </div>
+                        <hr>
+                        <h5><i class="fas fa-briefcase"></i><strong>&nbsp;Department</strong></h5>
+                        <div>
+                            <h5>Information of Communication Technology (ICT)</h5>
+                        </div>
+                        <hr>
+                        <h5><i class="fas fa-map-marker-alt"></i><strong>&nbsp;Address</strong></h5>
+                        <div>
+                            <h5>Sankalchand Patel University,<br>Sankalchand Patel Vidyadham,<br>Ambaji-Gandhinagar State Highway,<br>Visnagar-384315, Dist: Mehsana,<br>Gujarat (INDIA)</h5>
+                            <div class="d-lg-flex align-items-lg-start">
+                                <h5>Admin office:&nbsp;</h5><a href="tel:+917069006374" style="font-size: 18px;">7069006374</a>
+                                <h5>&nbsp;,&nbsp;</h5><a href="tel:8238088591" style="font-size: 18px;">8238088591</a>
+                            </div>
+                            <div class="d-lg-flex align-items-lg-start">
+                                <h5>Email:&nbsp;</h5><a href="mailto:info@spu.ac.in" style="font-size: 18px;">info@spu.ac.in</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" role="dialog" tabindex="-1" id="contactsupport-modal" style="max-width: 100%;max-height: 100%;">
+            <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4><i class="far fa-comments"></i>&nbsp;Contact Support</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div><a href="https://web.whatsapp.com" target="_blank" style="text-decoration: none;color: rgb(0,191,7);font-size: 18px;"><i class="fab fa-whatsapp"></i>&nbsp;WhatsApp Chat Help Support</a></div>
+                        <div><a href="https://facebook.com" target="_blank" style="text-decoration: none;color: var(--bs-blue);font-size: 18px;"><i class="fab fa-facebook"></i>&nbsp;Facebook Chat Help Support</a></div>
+                        <div><a href="https://gmail.com" target="_blank" style="text-decoration: none;color: #ff4b32;font-size: 18px;"><i class="fas fa-envelope"></i>&nbsp;E-Mail Help Support</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" role="dialog" tabindex="-1" id="logout-modal" style="max-width: 100%;max-height: 100%;">
+            <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4><i class="fas fa-sign-out-alt"></i>&nbsp;Confirm Logout ?</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div>
+                            <h1 style="font-size: 18px;">Are you sure you want to Logout from this device?</h1>
+                        </div>
+                        <hr>
+                        <div style="text-align: right;"><button class="btn btn-warning" type="button" style="text-align: right;border-radius: 10px;"><i class="fas fa-sign-out-alt"></i>&nbsp;Logout</button></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!-- End: Login Signup in Modal -->
+    <!-- Start: NavBar -->
+    <nav class="navbar navbar-dark navbar-expand-lg sticky-top" style="max-width: 100%;max-height: 75px;color: rgb(255,255,255);background: rgba(255,255,255,0);position: sticky;">
+        <div class="container-fluid"><a class="navbar-brand d-lg-flex justify-content-lg-center align-items-lg-center" data-aos="zoom-in-right" data-aos-duration="1000" href="#" style="font-size: 24px;font-family: Aldrich, sans-serif;"><i class="fab fa-connectdevelop pulse animated infinite" style="font-size: 34px;"></i><strong>&nbsp;Machine Learning</strong></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse d-md-flex align-items-md-end" id="navcol-1">
+                <ul class="navbar-nav" data-aos="zoom-in-left" data-aos-duration="1000" style="font-family: Aldrich, sans-serif;">
+                    <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-home"></i>&nbsp;Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-upload"></i>&nbsp;Upload</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#overall-performance-modal"><i class="fas fa-chart-line"></i>&nbsp;Overall</a></li>
+                    <li class="nav-item d-lg-flex align-items-lg-center">
+                        <div class="nav-item dropdown"><a class="dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" href="#" style="color: rgba(255,255,255,0.55);text-decoration: none;"><i class="fas fa-chart-pie"></i>&nbsp;PieCharts</a>
+                            <div class="dropdown-menu" style="right: 0;left: auto;box-shadow: 0px 0px 30px 0px rgb(255,255,255);border-width: 5px;border-color: rgb(29, 4, 129);border-top-color: rgb(29,;border-right-color: 4,;border-bottom-color: 129);border-left-color: 4,;border-radius: 25px;"><a class="dropdown-item" id="pie-1st" href="#" data-bs-toggle="modal" data-bs-target="#pie-classtest-modal" style="border-top-left-radius: 10px;border-top-right-radius: 10px;"><i class="fas fa-chart-pie"></i>&nbsp;Class Test Marks</a><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#pie-assignment-modal"><i class="fas fa-chart-pie"></i>&nbsp;Assignment Marks</a><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#pie-attendance-modal"><i class="fas fa-chart-pie"></i>&nbsp;Attendance Marks</a><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#pie-midsem-modal"><i class="fas fa-chart-pie"></i>&nbsp;Mid Sem Marks</a><a class="dropdown-item" id="pie-5th" href="#" style="border-bottom-right-radius: 10px;border-bottom-left-radius: 10px;" data-bs-toggle="modal" data-bs-target="#pie-finalexam-modal"><i class="fas fa-chart-pie"></i>&nbsp;Final Exam Marks</a></div>
+                        </div>
+                    </li>
+                    <li class="nav-item d-lg-flex align-items-lg-center" style="margin-left: 10px;">
+                        <div class="nav-item dropdown"><a class="dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" href="#" style="color: rgba(255,255,255,0.55);text-decoration: none;"><i class="fas fa-chart-bar"></i>&nbsp;BarGraphs</a>
+                            <div class="dropdown-menu" style="right: 0;left: auto;box-shadow: 0px 0px 30px 0px rgb(255,255,255);border-width: 5px;border-color: rgb(29, 4, 129);border-top-color: rgb(29,;border-right-color: 4,;border-bottom-color: 129);border-left-color: 4,;border-radius: 25px;"><a class="dropdown-item" id="bar-1st" href="#" data-bs-toggle="modal" data-bs-target="#bar-classtest-modal" style="border-top-left-radius: 10px;border-top-right-radius: 10px;"><i class="fas fa-chart-bar"></i>&nbsp;Class Test Marks</a><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#bar-assignment-modal"><i class="fas fa-chart-bar"></i>&nbsp;Assignment Marks</a><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#bar-attendance-modal"><i class="fas fa-chart-bar"></i>&nbsp;Attendance Marks</a><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#bar-midsem-modal"><i class="fas fa-chart-bar"></i>&nbsp;Mid Sem Marks</a><a class="dropdown-item" id="bar-5th" href="#" style="border-bottom-right-radius: 10px;border-bottom-left-radius: 10px;" data-bs-toggle="modal" data-bs-target="#bar-finalexam-modal"><i class="fas fa-chart-bar"></i>&nbsp;Final Exam Marks</a></div>
+                        </div>
+                    </li>
+                    <li class="nav-item d-lg-flex align-items-lg-center" style="margin-left: 10px;">
+                        <div class="nav-item dropdown"><a class="dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" href="#" style="color: rgba(255,255,255,0.55);text-decoration: none;"><i class="fas fa-user-circle"></i>&nbsp;My Account</a>
+                            <div class="dropdown-menu" style="right: 0;left: auto;box-shadow: 0px 0px 30px 0px rgb(255,255,255);border-width: 5px;border-color: rgb(29, 4, 129);border-top-color: rgb(29,;border-right-color: 4,;border-bottom-color: 129);border-left-color: 4,;border-radius: 25px;"><a class="dropdown-item" id="myAccount-1st" href="#" data-bs-toggle="modal" data-bs-target="#myprofile-modal" style="border-top-left-radius: 10px;border-top-right-radius: 10px;"><i class="fas fa-user"></i>&nbsp;My Profile</a><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#deleteaccount-modal"><i class="fas fa-trash-alt"></i>&nbsp;Delete Account</a><!-- Start: Menu Divider --><div class="dropdown-divider"></div><!-- End: Menu Divider --><a class="dropdown-item" href="#" data-bs-target="#teamdetails-modal" data-bs-toggle="modal"><i class="fas fa-users"></i>&nbsp;Team Details</a><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#contactsupport-modal"><i class="fas fa-comments"></i>&nbsp;Contact Support</a><!-- Start: Menu Divider --><div class="dropdown-divider"></div><!-- End: Menu Divider --><a class="dropdown-item" id="myAccount-5th" href="#" style="border-bottom-right-radius: 10px;border-bottom-left-radius: 10px;" data-bs-toggle="modal" data-bs-target="#logout-modal"><i class="fas fa-sign-out-alt"></i>&nbsp;Logout</a></div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav><!-- End: NavBar -->
+    <!-- Start: Dataset Box -->
+    <div class="text-center mainBox container" style="margin: auto;margin-top: 50px;padding: 20px;width: 80%;border-radius: 25px;border: 5px solid rgb(29, 4, 129);font-family: Aldrich, sans-serif;color: rgb(0, 0, 0);box-shadow: 0px 0px 30px rgb(255, 255, 255);background-color: rgb(255, 255, 255);">
+        <h2>[Dataset]</h2><input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Search any Data here.." style="margin-bottom: 10px;font-size: 20px;width: 50%;outline: none;border-radius: 10px;text-align: center;border-style: solid;border-color: rgb(29, 4, 129);border-top-color: rgb(29,;border-right-color: 4,;border-bottom-color: 129);border-left-color: 4,;background: rgb(14, 0, 70);color: rgb(255,255,255);box-shadow: inset 0px 0px 10px;padding-top: 3px;padding-bottom: 3px;">
+        <div class="table-responsive text-center" id="dataTable">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="tableHeadingBoxes" onclick="sortTable(0)">Student Name</th>
+                        <th class="tableHeadingBoxes" onclick="sortTable(1)">Class Test</th>
+                        <th class="tableHeadingBoxes" onclick="sortTable(2)">Assignment</th>
+                        <th class="tableHeadingBoxes" onclick="sortTable(3)">Attendance</th>
+                        <th class="tableHeadingBoxes" onclick="sortTable(4)">Mid Sem</th>
+                        <th class="tableHeadingBoxes" onclick="sortTable(5)">Final Exam</th>
+                        <th class="tableHeadingBoxes" onclick="sortTable(6)">Total Marks</th>
+                        <th class="tableHeadingBoxes" onclick="sortTable(7)">Predicted Final Exam</th>
+                        <th class="tableHeadingBoxes" onclick="sortTable(8)">Performance</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><br><span style="color: rgb(253, 254, 255); background-color: rgb(3, 13, 34);">{{ </span><span style="color: rgb(255, 46, 151); background-color: rgb(3, 13, 34);">row[</span><span style="color: rgb(14, 243, 255); background-color: rgb(3, 13, 34);">'Student Name'</span><span style="color: rgb(255, 46, 151); background-color: rgb(3, 13, 34);">]</span><span style="color: rgb(253, 254, 255); background-color: rgb(3, 13, 34);"> }}</span><br><br></td>
+                        <td><br><span style="color: rgb(253, 254, 255); background-color: rgb(3, 13, 34);">{{ </span><span style="color: rgb(255, 46, 151); background-color: rgb(3, 13, 34);">row[</span><span style="color: rgb(14, 243, 255); background-color: rgb(3, 13, 34);">'Class Test'</span><span style="color: rgb(255, 46, 151); background-color: rgb(3, 13, 34);">]</span><span style="color: rgb(253, 254, 255); background-color: rgb(3, 13, 34);"> }}</span><br><br></td>
+                        <td><br><span style="color: rgb(253, 254, 255); background-color: rgb(3, 13, 34);">{{ </span><span style="color: rgb(255, 46, 151); background-color: rgb(3, 13, 34);">row[</span><span style="color: rgb(14, 243, 255); background-color: rgb(3, 13, 34);">'Assignment'</span><span style="color: rgb(255, 46, 151); background-color: rgb(3, 13, 34);">]</span><span style="color: rgb(253, 254, 255); background-color: rgb(3, 13, 34);"> }}</span><br><br></td>
+                        <td><br><span style="color: rgb(253, 254, 255); background-color: rgb(3, 13, 34);">{{ </span><span style="color: rgb(255, 46, 151); background-color: rgb(3, 13, 34);">row[</span><span style="color: rgb(14, 243, 255); background-color: rgb(3, 13, 34);">'Attendance'</span><span style="color: rgb(255, 46, 151); background-color: rgb(3, 13, 34);">]</span><span style="color: rgb(253, 254, 255); background-color: rgb(3, 13, 34);"> }}</span><br><br></td>
+                        <td><br><span style="color: rgb(253, 254, 255); background-color: rgb(3, 13, 34);">{{ </span><span style="color: rgb(255, 46, 151); background-color: rgb(3, 13, 34);">row[</span><span style="color: rgb(14, 243, 255); background-color: rgb(3, 13, 34);">'Mid Sem'</span><span style="color: rgb(255, 46, 151); background-color: rgb(3, 13, 34);">]</span><span style="color: rgb(253, 254, 255); background-color: rgb(3, 13, 34);"> }}</span><br><br></td>
+                        <td><br><span style="color: rgb(253, 254, 255); background-color: rgb(3, 13, 34);">{{ </span><span style="color: rgb(255, 46, 151); background-color: rgb(3, 13, 34);">row[</span><span style="color: rgb(14, 243, 255); background-color: rgb(3, 13, 34);">'Final Exam'</span><span style="color: rgb(255, 46, 151); background-color: rgb(3, 13, 34);">]</span><span style="color: rgb(253, 254, 255); background-color: rgb(3, 13, 34);"> }}</span><br><br></td>
+                        <td><br><span style="color: rgb(253, 254, 255); background-color: rgb(3, 13, 34);">{{ </span><span style="color: rgb(255, 46, 151); background-color: rgb(3, 13, 34);">row[</span><span style="color: rgb(14, 243, 255); background-color: rgb(3, 13, 34);">'Total Marks'</span><span style="color: rgb(255, 46, 151); background-color: rgb(3, 13, 34);">]</span><span style="color: rgb(253, 254, 255); background-color: rgb(3, 13, 34);"> }}</span><br><br></td>
+                        <td><br><span style="color: rgb(253, 254, 255); background-color: rgb(3, 13, 34);">{{ </span><span style="color: rgb(255, 46, 151); background-color: rgb(3, 13, 34);">row[</span><span style="color: rgb(14, 243, 255); background-color: rgb(3, 13, 34);">'Predicted Final Exam'</span><span style="color: rgb(255, 46, 151); background-color: rgb(3, 13, 34);">]</span><span style="color: rgb(253, 254, 255); background-color: rgb(3, 13, 34);"> }}</span><br><br></td>
+                        <td><br><span style="color: rgb(253, 254, 255); background-color: rgb(3, 13, 34);">{{ </span><span style="color: rgb(255, 46, 151); background-color: rgb(3, 13, 34);">row[</span><span style="color: rgb(14, 243, 255); background-color: rgb(3, 13, 34);">'Performance'</span><span style="color: rgb(255, 46, 151); background-color: rgb(3, 13, 34);">]</span><span style="color: rgb(253, 254, 255); background-color: rgb(3, 13, 34);"> }}</span><br><br></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div><!-- End: Dataset Box --><!-- Footer -->
+    <footer>
+        <div class="container"">
+          <p>Copyright © 2023 | Sentiment Monitoring System | Data-Science & ML Project</p></br>
+        </div>
+    </footer>
+                               <style>
+                               footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+    }
+    footer p{
+                               font-family: Aldrich, sans-serif;
+        color: rgb(255, 255, 255);
+        display: flex;
+        justify-content: center;
+    }</style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/js/bs-init.js?h=02a8f8d0119ea38ce4670281c1438789"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="/assets/js/full-screen-navbar-search.js?h=acb42710ac8f7ed0706959ab3a64e69e"></script>
+    <script src="/assets/js/Video-Parallax-Background-v2.js?h=81910c12a0000502c6f31bf0e802d587"></script>
+</body>
+
+</html>

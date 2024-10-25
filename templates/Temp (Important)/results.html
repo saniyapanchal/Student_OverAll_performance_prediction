@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Results</title>
+</head>
+<body align="center">
+  <div class="mainBox container">
+    <h1>Analysis Results</h1>
+    <div>
+      <!--<h2>Attendance Marks</h2>-->
+      <img src="data:image/png;base64,{{attendance_graph}}" alt="Attendance Marks Graph">
+      <!--<h2>Class Test Marks</h2>-->
+      <img src="data:image/png;base64,{{classtest_graph}}" alt="Class Test Mark Graphs">
+      <!--<h2>Assignment Marks</h2>-->
+      <img src="data:image/png;base64,{{assignment_graph}}" alt="Assignment Marks Graph">
+      <!--<h2>Mid Sem Marks</h2>-->
+      <img src="data:image/png;base64,{{midsem_graph}}" alt="Mid Sem Marks Graph">
+      <!--<h2>Final Exam Marks</h2>-->
+      <img src="data:image/png;base64,{{finalexam_graph}}" alt="Final Exam Marks Graph">
+    </div>
+  </div>
+  <div class="mainBox container">
+    <div>
+      <!--<h2>Performance Remarks</h2>-->
+      {% if performance_remarks == "Good" %}
+      <h1><strong style="color:green"> Overall Performance: {{performance_percentage}}%
+          ({{performance_remarks}})</strong>
+      </h1>
+      {% elif performance_remarks == "Bad" %}
+      <h1><strong style="color:red"> Overall Performance: {{performance_percentage}}%
+          ({{performance_remarks}}%)</strong>
+        <h1>
+          {% else %}
+          <h1><strong> Overall Performance: {{performance_percentage}}% ({{performance_remarks}})</strong></h1>
+          {% endif %}
+          <!--<h2>Overall Performance Graph</h2>-->
+          <img width="1000" src="data:image/png;base64,{{overall_performance_graph}}" alt="Overall Performance Graph">
+    </div>
+  </div>
+  </br>
+  <!-- {% block content %}
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        {{ fig1|safe }}
+      </div>
+      <div class="col-md-6">
+        {{ fig2|safe }}
+      </div>
+    </div>
+  </div>
+{% endblock %} -->
+  <div class="mainBox container">
+    <div class="row">
+      <img src="data:image/png;base64,{{ class_test }}" alt="Class Test Histogram" class="img-fluid">
+      <img src="data:image/png;base64,{{ assignment }}" alt="Assignment Histogram" class="img-fluid">
+      <img src="data:image/png;base64,{{ attendance }}" alt="Attendance Histogram" class="img-fluid">
+      <img src="data:image/png;base64,{{ mid_sem }}" alt="Mid Sem Histogram" class="img-fluid">
+      <img src="data:image/png;base64,{{ final_exam }}" alt="Final Exam Histogram" class="img-fluid">
+    </div>
+  </div>
+  </br>
+  </br>
+  <div class="mainBox container">
+    <h2>Performance Level and Total Marks Scatterplot</h2>
+    <div class="legend">
+      <span class="legend-item excellent"></span>Excellent
+      <span class="legend-item good"></span>Good
+      <span class="legend-item average"></span>Average
+      <span class="legend-item below-average"></span>Below Average
+      <span class="legend-item poor"></span>Poor
+    </div>
+    <div class="chart-container">
+      <canvas id="scatterplot" width="800" height="600"></canvas>
+    </div>
+  </div>
+  <div class="mainBox container">
+    <h2>Dataset</h2>
+    <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Search any Data here..">
+    <table id="dataTable" align="center">
+      <thead>
+        <tr>
+          <th onclick="sortTable(0)" class="tableHeadingBoxes">Student Name</th>
+          <th onclick="sortTable(1)" class="tableHeadingBoxes">Class Test</th>
+          <th onclick="sortTable(2)" class="tableHeadingBoxes">Assignment</th>
+          <th onclick="sortTable(3)" class="tableHeadingBoxes">Attendance</th>
+          <th onclick="sortTable(4)" class="tableHeadingBoxes">Mid Sem</th>
+          <th onclick="sortTable(5)" class="tableHeadingBoxes">Final Exam</th>
+          <th onclick="sortTable(6)" class="tableHeadingBoxes">Total Marks</th>
+          <th onclick="sortTable(7)" class="tableHeadingBoxes">Predicted Final Exam</th>
+          <th onclick="sortTable(8)" class="tableHeadingBoxes">Performance</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for index, row in data.iterrows() %}
+        <tr>
+          <td>{{ row['Student Name'] }}</td>
+          <td>{{ row['Class Test'] }}</td>
+          <td>{{ row['Assignment'] }}</td>
+          <td>{{ row['Attendance'] }}</td>
+          <td>{{ row['Mid Sem'] }}</td>
+          <td>{{ row['Final Exam'] }}</td>
+          <td>{{ row['Total Marks'] }}</td>
+          <td>{{ row['Predicted Final Exam'] }}</td>
+          <td>{{ row['Performance'] }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <script src=" https://cdn.jsdelivr.net/npm/chart.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom"></script>
+</body>
+</html>
+
+<!-- JavaScript -->
+<script>
+  var scatterplotData = {
+    datasets: [{
+      data: [
+        {% for index, row in data.iterrows() %}
+          {
+      x: {{ row['Total Marks'] }},
+    y: {{ row['Final Exam'] }},
+  r: 10,
+    performance: '{{ row['Performance'] }}'
+          },
+  {% endfor %}
+      ],
+  backgroundColor: function(context) {
+    var performance = context.raw.performance;
+    if (performance == 'Excellent') {
+      return 'rgba(0, 255, 0, 0.5)';
+    } else if (performance == 'Good') {
+      return 'rgba(54, 162, 235, 0.5)';
+    } else if (performance == 'Average') {
+      return 'rgba(255, 206, 86, 0.5)';
+    } else if (performance == 'Below Average') {
+      return 'rgba(255, 165, 0, 0.5)';
+    } else {
+      return 'rgba(255, 0, 0, 0.5)';
+    }
+  }
+  }]
+};
+
+  var scatterplotOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
+    tooltips: false,
+    hover: {
+      onHover: null
+    },
+    scales: {
+      xAxes: [{
+        scaleLabel: {
+          display: true,
+          labelString: 'Total Marks',
+          fontColor: '#333',
+          fontSize: 16
+        },
+        ticks: {
+          beginAtZero: true
+        }
+      }],
+      yAxes: [{
+        scaleLabel: {
+          display: true,
+          labelString: 'Final Exam',
+          fontColor: '#333',
+          fontSize: 16
+        },
+        ticks: {
+          beginAtZero: true
+        }
+      }]
+    },
+    legend: {
+      display: false
+    },
+    layout: {
+      margin: {
+        left: 0,
+        right: 0,
+        top: 0,
+        bottom: 0
+      },
+      padding: {
+        left: 50,
+        right: 50,
+        top: 50,
+        bottom: 50
+      }
+    }
+  };
+
+  var scatterplotCtx = document.getElementById('scatterplot').getContext('2d');
+  var scatterplotChart = new Chart(scatterplotCtx, {
+    type: 'bubble',
+    data: scatterplotData,
+    options: scatterplotOptions
+  });
+
+  function searchTable() {
+    // Declare variables
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("searchInput");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("dataTable");
+    tr = table.getElementsByTagName("tr");
+
+    // Loop through all table rows, and hide those that don't match the search query
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("td");
+      for (j = 0; j < td.length; j++) {
+        if (td[j]) {
+          txtValue = td[j].textContent || td[j].innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+            break;
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+    }
+  }
+
+  function sortTable(columnIndex) {
+    var table, rows, switching, i, x, y, shouldSwitch, direction, switchcount = 0;
+    table = document.getElementById("dataTable");
+    switching = true;
+    direction = "asc";
+    while (switching) {
+      switching = false;
+      rows = table.rows;
+      for (i = 1; i < (rows.length - 1); i++) {
+        shouldSwitch = false;
+        x = rows[i].getElementsByTagName("TD")[columnIndex];
+        y = rows[i + 1].getElementsByTagName("TD")[columnIndex];
+        if (direction == "asc") {
+          if (isNaN(parseFloat(x.innerHTML))) {
+            if (x.innerHTML.toLowerCase().localeCompare(y.innerHTML.toLowerCase()) > 0) {
+              shouldSwitch = true;
+              break;
+            }
+          } else {
+            if (parseFloat(x.innerHTML) > parseFloat(y.innerHTML)) {
+              shouldSwitch = true;
+              break;
+            }
+          }
+        } else if (direction == "desc") {
+          if (isNaN(parseFloat(x.innerHTML))) {
+            if (x.innerHTML.toLowerCase().localeCompare(y.innerHTML.toLowerCase()) < 0) {
+              shouldSwitch = true;
+              break;
+            }
+          } else {
+            if (parseFloat(x.innerHTML) < parseFloat(y.innerHTML)) {
+              shouldSwitch = true;
+              break;
+            }
+          }
+        }
+      }
+      if (shouldSwitch) {
+        rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+        switching = true;
+        switchcount ++;
+      } else {
+        if (switchcount == 0 && direction == "asc") {
+          direction = "desc";
+          switching = true;
+        }
+      }
+    }
+  }
+
+</script>
+
+<!-- CSS -->
+<style>
+  img {
+    max-width: 100%;
+  }
+
+  .legend {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 0;
+  }
+
+  .legend-item {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 45px;
+    margin-left: 10px;
+    margin-right: 2px;
+  }
+
+  .excellent {
+    background-color: rgba(0, 255, 0, 0.5);
+  }
+
+  .good {
+    background-color: rgba(54, 162, 235, 0.5);
+  }
+
+  .average {
+    background-color: rgba(255, 206, 86, 0.5);
+  }
+
+  .below-average {
+    background-color: rgba(255, 165, 0, 0.5);
+  }
+
+  .poor {
+    background-color: rgba(255, 0, 0, 0.5);
+  }
+
+  table {
+    border: 2px solid black;
+    border-collapse: collapse;
+    overflow: auto;
+    display: block;
+    max-width: 80%;
+  }
+
+  th {
+    background-color: rgba(0, 0, 80, 1);
+    color: white;
+  }
+
+  .tableHeadingBoxes {
+    border: 1px solid rgba(255,255,255,1);
+  }
+
+  th, td {
+    padding: 8px;
+  }
+
+  tr {
+    border: 1px solid black;
+  }
+
+  body {
+    background-color: rgb(14, 0, 70);
+  }
+
+  .mainBox {
+    margin: auto;
+    margin-top: 20px;
+    padding: 20px;
+    width: 80%;
+    border-radius: 25px;
+    border: 5px solid rgb(29, 4, 129);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: rgb(0, 0, 0);
+    box-shadow: 0px 0px 30px rgb(255, 255, 255);
+    background-color: rgb(255, 255, 255);
+  }
+
+  #searchInput {
+    margin-bottom: 10px;
+    font-size: 20px;
+    width: 50%;
+    outline: none;
+  }
+</style>
